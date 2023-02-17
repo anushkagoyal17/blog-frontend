@@ -48,7 +48,9 @@ export class LiveBlogs extends Component {
         loading: false
       }
 }  
-  
+  // componentDidMount(){
+
+  // }
   render() 
     {
       return(
