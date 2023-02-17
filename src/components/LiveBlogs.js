@@ -2,23 +2,68 @@ import React, {Component} from 'react';
 import BlogItem from './BlogItem';
 
 export class LiveBlogs extends Component {
-    // constructor(){
-    //     super();
-    //     console.log('Holaa');
-    //     this.state = {
-            
-    //     }
-    // }
-    render() 
+    
+    blogs = [
+      {
+          "id": 1,
+          "blog_title": "sample blog 12 sample blog 12 sample blog 12",
+          "blog_image": "/assets/images.jpeg",
+          "blog_content": "1 sample content sample content sample content1 sample content sample content sample content1 sample content sample content sample content1 sample content sample content sample content1 sample content sample content sample content",
+          "is_published": "Yes",
+          "blog_url": "/",
+          "created_at": "2023-02-09T09:08:14.581519Z",
+          "updated_at": "2023-02-09T09:08:14.581531Z",
+          "published_at": "2023-02-09T09:08:14.579817Z",
+          "user": 1
+      },
+      {
+          "id": 4,
+          "blog_title": "Renamed sample blogRenamed sample blogRenamed sample blogRenamed sample blog",
+          "blog_image": "/assets/images.jpeg",
+          "blog_content": "2 sample content sample content sample content2 sample content sample content sample content2 sample content sample content sample content2 sample content sample content sample content2 sample content sample content sample content",
+          "is_published": "No",
+          "blog_url": "/",
+          "created_at": "2023-02-09T09:36:21.933037Z",
+          "updated_at": "2023-02-09T11:39:31.668841Z",
+          "published_at": null,
+          "user": 1
+      },
+      {
+          "id": 5,
+          "blog_title": "sample blog 2sample blog 2sample blog 2sample blog 2sample blog 2",
+          "blog_image": "../assets/images.jpeg",
+          "blog_content": "3 sample content sample content sample content3 sample content sample content sample content3 sample content sample content sample content3 sample content sample content sample content3 sample content sample content sample content3 sample content sample content sample content",
+          "is_published": "No",
+          "blog_url": "/",
+          "created_at": "2023-02-09T09:50:41.676834Z",
+          "updated_at": "2023-02-09T09:50:41.676846Z",
+          "published_at": null,
+          "user": 1
+      }
+  ]
+  constructor(){
+    super();
+    this.state = {
+        blogs: this.blogs,
+        loading: false
+      }
+}  
+  
+  render() 
     {
       return(
         <div className='container my-3'>
         <h1>Blogs</h1>
         <div className='row'>
-            <div className="col-md-3">
-            <BlogItem title='Apple' content='Dummy content' imgUrl="https://images7.alphacoders.com/411/411820.jpg"/>
+        {this.state.blogs.map((element)=>{
+            return <div className="col-md-3" key={element.id}>
+            <BlogItem title={element.blog_title.slice(0,30)} content={element.blog_content.slice(0,50)} imgUrl={element.blog_image} blogUrl={element.blog_url} />
             </div>
-            <div className="col-md-3">
+        }
+        )}
+        
+            
+            {/* <div className="col-md-3">
             <BlogItem title='Samsung' content='Dummy content'/>
             </div>
             <div className="col-md-3">
@@ -26,7 +71,7 @@ export class LiveBlogs extends Component {
             </div>
             <div className="col-md-3">
             <BlogItem title='One Plus' content='Dummy content'/>
-            </div>
+            </div> */}
         </div>
         </div>
         );
