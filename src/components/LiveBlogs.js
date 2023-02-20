@@ -3,54 +3,20 @@ import BlogItem from './BlogItem';
 
 export class LiveBlogs extends Component {
     
-    blogs = [
-      {
-          "id": 1,
-          "blog_title": "sample blog 12 sample blog 12 sample blog 12",
-          "blog_image": "/assets/images.jpeg",
-          "blog_content": "1 sample content sample content sample content1 sample content sample content sample content1 sample content sample content sample content1 sample content sample content sample content1 sample content sample content sample content",
-          "is_published": "Yes",
-          "blog_url": "/",
-          "created_at": "2023-02-09T09:08:14.581519Z",
-          "updated_at": "2023-02-09T09:08:14.581531Z",
-          "published_at": "2023-02-09T09:08:14.579817Z",
-          "user": 1
-      },
-      {
-          "id": 4,
-          "blog_title": "Renamed sample blogRenamed sample blogRenamed sample blogRenamed sample blog",
-          "blog_image": "/assets/images.jpeg",
-          "blog_content": "2 sample content sample content sample content2 sample content sample content sample content2 sample content sample content sample content2 sample content sample content sample content2 sample content sample content sample content",
-          "is_published": "No",
-          "blog_url": "/",
-          "created_at": "2023-02-09T09:36:21.933037Z",
-          "updated_at": "2023-02-09T11:39:31.668841Z",
-          "published_at": null,
-          "user": 1
-      },
-      {
-          "id": 5,
-          "blog_title": "sample blog 2sample blog 2sample blog 2sample blog 2sample blog 2",
-          "blog_image": "../assets/images.jpeg",
-          "blog_content": "3 sample content sample content sample content3 sample content sample content sample content3 sample content sample content sample content3 sample content sample content sample content3 sample content sample content sample content3 sample content sample content sample content",
-          "is_published": "No",
-          "blog_url": "/",
-          "created_at": "2023-02-09T09:50:41.676834Z",
-          "updated_at": "2023-02-09T09:50:41.676846Z",
-          "published_at": null,
-          "user": 1
-      }
-  ]
   constructor(){
     super();
     this.state = {
-        blogs: this.blogs,
+        blogs: [],
         loading: false
       }
 }  
-  // componentDidMount(){
-
-  // }
+  async componentDidMount(){
+    let url = "http://127.0.0.1:8000/api/user/home/"
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({blogs: parsedData.blogs})
+  }
   render() 
     {
       return(

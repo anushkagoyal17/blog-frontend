@@ -1,8 +1,9 @@
 // import {useState} from "react";
 import './App.css';
 import LiveBlogs from './components/LiveBlogs';
+import Test from './components/Test';
 import Navbar from './components/Navbar';
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import About from './components/About';
 // import Home from './components/Home';
@@ -20,12 +21,15 @@ export default class App extends Component {
     render()
     {
       return(
-        // <Navbar/>
+        <BrowserRouter>
+        <Routes> 
+          <Route path='/' element={< LiveBlogs/>} />
+          {/* <Navbar/>
         <LiveBlogs/>
-      // <Routes>
-      //   <Route exact path='/' element={<Navbar />}></Route>
-      //   <Route exact path='/liveblogs' element={<LiveBlogs />}></Route>
-      // </Routes>
+         <Route exact path='/' element={<Navbar />}></Route>
+         <Route exact path='/liveblogs' element={<LiveBlogs />}></Route> */}
+       </Routes>
+      </BrowserRouter>
     )
   }
 }
